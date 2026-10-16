@@ -1,0 +1,27 @@
+[
+  {
+    "id": "att-1791891206802",
+    "schoolId": "school-sop-001",
+    "className": "Grade 8",
+    "date": "2026-10-13",
+    "recordedBy": "Dr. Evelyn Mwangi",
+    "recordedAt": "2026-10-13T11:33:26.802Z",
+    "summary": {
+      "total": 1,
+      "present": 1,
+      "absent": 0,
+      "late": 0,
+      "excused": 0,
+      "presentRate": 100
+    },
+    "entries": [
+      {
+        "studentId": "std-1791891206652",
+        "studentName": "Kariuki Waweru",
+        "admNo": "SOP-REALTIME-9932",
+        "status": "PRESENT",
+        "remarks": "Present and punctual"
+      }
+    ]
+  }
+]

@@ -1,0 +1,62 @@
+[
+  {
+    "id": "st-1791891206749",
+    "schoolId": "school-sop-001",
+    "name": "Dr. Caroline Kerubo",
+    "role": "Senior Chemistry Faculty",
+    "department": "Sciences",
+    "email": "caroline.kerubo@sopacademy.ac.ke",
+    "phone": "+254722888999",
+    "workload": "22 periods/wk"
+  },
+  {
+    "id": "st-1791891178272",
+    "schoolId": "school-sop-001",
+    "name": "Dr. Caroline Kerubo",
+    "role": "Senior Chemistry Faculty",
+    "department": "Sciences",
+    "email": "caroline.kerubo@sopacademy.ac.ke",
+    "phone": "+254722888999",
+    "workload": "22 periods/wk"
+  },
+  {
+    "id": "st-1",
+    "schoolId": "school-sop-001",
+    "name": "Dr. Peter Kamau",
+    "role": "Head of Sciences & STEM",
+    "department": "Sciences",
+    "email": "peter.kamau@sopacademy.ac.ke",
+    "phone": "+254 722 101 202",
+    "workload": "22 periods/wk"
+  },
+  {
+    "id": "st-2",
+    "schoolId": "school-sop-001",
+    "name": "Sarah Mwangi",
+    "role": "Senior Educator & Grade 8 East Lead",
+    "department": "Languages",
+    "email": "sarah.mwangi@sopacademy.ac.ke",
+    "phone": "+254 723 202 303",
+    "workload": "24 periods/wk"
+  },
+  {
+    "id": "st-3",
+    "schoolId": "school-sop-001",
+    "name": "Dennis Njoroge",
+    "role": "Mathematics Faculty Lead",
+    "department": "Mathematics",
+    "email": "dennis.njoroge@sopacademy.ac.ke",
+    "phone": "+254 724 303 404",
+    "workload": "20 periods/wk"
+  },
+  {
+    "id": "st-4",
+    "schoolId": "school-sop-001",
+    "name": "Lucy Wanjiru",
+    "role": "IGCSE Coordinator & Social Sciences",
+    "department": "Humanities",
+    "email": "lucy.wanjiru@sopacademy.ac.ke",
+    "phone": "+254 725 404 505",
+    "workload": "18 periods/wk"
+  }
+]

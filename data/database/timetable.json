@@ -1,0 +1,67 @@
+[
+  {
+    "id": "tt-1791891466098",
+    "schoolId": "school-sop-001",
+    "dayOfWeek": "Tuesday",
+    "period": 1,
+    "startTime": "08:00 AM",
+    "endTime": "08:45 AM",
+    "className": "Grade 8",
+    "streamName": "West",
+    "subject": "Social Studies",
+    "teacherName": "Dennis Njoroge",
+    "room": "Room 12B"
+  },
+  {
+    "id": "tt-1",
+    "schoolId": "school-sop-001",
+    "dayOfWeek": "Monday",
+    "period": 1,
+    "startTime": "08:00 AM",
+    "endTime": "08:45 AM",
+    "className": "Grade 8",
+    "streamName": "East",
+    "subject": "Mathematics",
+    "teacherName": "Sarah Wanjiku",
+    "room": "Room 14"
+  },
+  {
+    "id": "tt-2",
+    "schoolId": "school-sop-001",
+    "dayOfWeek": "Monday",
+    "period": 2,
+    "startTime": "08:45 AM",
+    "endTime": "09:30 AM",
+    "className": "Grade 8",
+    "streamName": "East",
+    "subject": "Integrated Science",
+    "teacherName": "Sarah Wanjiku",
+    "room": "Science Lab 2"
+  },
+  {
+    "id": "tt-3",
+    "schoolId": "school-sop-001",
+    "dayOfWeek": "Monday",
+    "period": 3,
+    "startTime": "09:45 AM",
+    "endTime": "10:30 AM",
+    "className": "Grade 7",
+    "streamName": "North",
+    "subject": "Integrated Science",
+    "teacherName": "James Mutua",
+    "room": "Science Lab 1"
+  },
+  {
+    "id": "tt-4",
+    "schoolId": "school-sop-001",
+    "dayOfWeek": "Monday",
+    "period": 4,
+    "startTime": "10:30 AM",
+    "endTime": "11:15 AM",
+    "className": "Year 10",
+    "streamName": "Alpha",
+    "subject": "Cambridge Physics",
+    "teacherName": "Brian Odhiambo",
+    "room": "Senior Physics Lab"
+  }
+]

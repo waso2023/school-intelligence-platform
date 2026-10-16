@@ -1,0 +1,157 @@
+[
+  {
+    "id": "inv-2026-001",
+    "schoolId": "school-sop-001",
+    "invoiceNumber": "INV-2026-0082",
+    "studentId": "std-001",
+    "academicYear": "2026",
+    "term": "Term 1",
+    "items": [
+      {
+        "feeItemId": "tui-1",
+        "description": "CBC Junior Secondary Tuition",
+        "amount": 60000
+      },
+      {
+        "feeItemId": "act-1",
+        "description": "Science Laboratory Materials",
+        "amount": 10000
+      },
+      {
+        "feeItemId": "lch-1",
+        "description": "Hot Meal & Lunch Catering",
+        "amount": 15000
+      }
+    ],
+    "totalAmount": 85000,
+    "paidAmount": 86000,
+    "balance": 0,
+    "dueDate": "2026-10-31",
+    "status": "PAID",
+    "createdAt": "2026-09-01T08:00:00Z"
+  },
+  {
+    "id": "inv-2026-002",
+    "schoolId": "school-sop-001",
+    "invoiceNumber": "INV-2026-0083",
+    "studentId": "std-002",
+    "academicYear": "2026",
+    "term": "Term 1",
+    "items": [
+      {
+        "feeItemId": "tui-1",
+        "description": "CBC Junior Secondary Tuition",
+        "amount": 60000
+      },
+      {
+        "feeItemId": "act-1",
+        "description": "Science Laboratory Materials",
+        "amount": 10000
+      },
+      {
+        "feeItemId": "lch-1",
+        "description": "Hot Meal & Lunch Catering",
+        "amount": 15000
+      }
+    ],
+    "totalAmount": 85000,
+    "paidAmount": 85000,
+    "balance": 0,
+    "dueDate": "2026-10-31",
+    "status": "PAID",
+    "createdAt": "2026-09-01T08:00:00Z"
+  },
+  {
+    "id": "inv-2026-003",
+    "schoolId": "school-sop-001",
+    "invoiceNumber": "INV-2026-0084",
+    "studentId": "std-003",
+    "academicYear": "2026",
+    "term": "Term 1",
+    "items": [
+      {
+        "feeItemId": "tui-1",
+        "description": "CBC Junior Secondary Tuition",
+        "amount": 60000
+      },
+      {
+        "feeItemId": "act-1",
+        "description": "Science Laboratory Materials",
+        "amount": 10000
+      },
+      {
+        "feeItemId": "lch-1",
+        "description": "Hot Meal & Lunch Catering",
+        "amount": 15000
+      }
+    ],
+    "totalAmount": 85000,
+    "paidAmount": 45000,
+    "balance": 40000,
+    "dueDate": "2026-09-30",
+    "status": "OVERDUE",
+    "createdAt": "2026-09-01T08:00:00Z"
+  },
+  {
+    "id": "inv-2026-004",
+    "schoolId": "school-sop-001",
+    "invoiceNumber": "INV-2026-0085",
+    "studentId": "std-004",
+    "academicYear": "2026",
+    "term": "Term 1",
+    "items": [
+      {
+        "feeItemId": "tui-1",
+        "description": "CBC Junior Secondary Tuition",
+        "amount": 60000
+      },
+      {
+        "feeItemId": "act-1",
+        "description": "Science Laboratory Materials",
+        "amount": 10000
+      },
+      {
+        "feeItemId": "lch-1",
+        "description": "Hot Meal & Lunch Catering",
+        "amount": 15000
+      }
+    ],
+    "totalAmount": 85000,
+    "paidAmount": 70000,
+    "balance": 15000,
+    "dueDate": "2026-10-31",
+    "status": "PARTIAL",
+    "createdAt": "2026-09-01T08:00:00Z"
+  },
+  {
+    "id": "inv-2026-005",
+    "schoolId": "school-sop-001",
+    "invoiceNumber": "INV-2026-0086",
+    "studentId": "std-005",
+    "academicYear": "2026",
+    "term": "Term 1",
+    "items": [
+      {
+        "feeItemId": "tui-y10",
+        "description": "Cambridge CAIE Core Tuition",
+        "amount": 70000
+      },
+      {
+        "feeItemId": "exm-1",
+        "description": "IGCSE Coursework Levy",
+        "amount": 15000
+      },
+      {
+        "feeItemId": "lch-1",
+        "description": "Dining & Catering Package",
+        "amount": 15000
+      }
+    ],
+    "totalAmount": 100000,
+    "paidAmount": 55000,
+    "balance": 45000,
+    "dueDate": "2026-09-25",
+    "status": "OVERDUE",
+    "createdAt": "2026-09-01T08:00:00Z"
+  }
+]

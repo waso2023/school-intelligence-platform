@@ -1,0 +1,90 @@
+[
+  {
+    "id": "ann-1791891466593",
+    "schoolId": "school-sop-001",
+    "title": "Science Fair 2026",
+    "channel": "SMS & EMAIL",
+    "targetRole": "ALL",
+    "content": "Annual STEM exhibition holding in Science Quad.",
+    "publishedAt": "2026-10-13T11:37:46.593Z",
+    "status": "PUBLISHED",
+    "author": "Head of Sciences"
+  },
+  {
+    "id": "ann-1791891328149",
+    "schoolId": "school-sop-001",
+    "title": "Science Fair 2026",
+    "channel": "SMS & EMAIL",
+    "targetRole": "ALL",
+    "content": "Annual STEM exhibition holding in Science Quad.",
+    "publishedAt": "2026-10-13T11:35:28.149Z",
+    "status": "PUBLISHED",
+    "author": "Head of Sciences"
+  },
+  {
+    "id": "ann-1791891269219",
+    "schoolId": "school-sop-001",
+    "title": "Science Fair 2026",
+    "channel": "SMS & EMAIL",
+    "targetRole": "ALL",
+    "content": "Annual STEM exhibition holding in Science Quad.",
+    "publishedAt": "2026-10-13T11:34:29.219Z",
+    "status": "PUBLISHED",
+    "author": "Head of Sciences"
+  },
+  {
+    "id": "ann-1791891206827",
+    "schoolId": "school-sop-001",
+    "title": "Real-time School Portal Database Live",
+    "channel": "SMS & IN-APP",
+    "targetRole": "ALL PARENTS",
+    "content": "The school intelligence platform is now running real-time database persistence.",
+    "publishedAt": "2026-10-13T11:33:26.827Z",
+    "status": "PUBLISHED",
+    "author": "Dr. Evelyn Mwangi (SUPER_ADMIN)"
+  },
+  {
+    "id": "ann-1791890883283",
+    "schoolId": "school-sop-001",
+    "title": "Science Fair 2026",
+    "channel": "SMS & EMAIL",
+    "targetRole": "ALL",
+    "content": "Annual STEM exhibition holding in Science Quad.",
+    "publishedAt": "2026-10-13T11:28:03.283Z",
+    "status": "PUBLISHED",
+    "author": "Head of Sciences"
+  },
+  {
+    "id": "ann-1",
+    "schoolId": "school-sop-001",
+    "title": "Mid-Term Academic Progress Reports & Consultations",
+    "channel": "SMS & EMAIL",
+    "targetRole": "ALL PARENTS",
+    "content": "Term 1 mid-term assessment reports have been compiled. Individual parent-teacher conferences commence this Friday at 09:00 AM in the Main Hall.",
+    "publishedAt": "2026-10-08T08:30:00Z",
+    "status": "PUBLISHED",
+    "author": "Prof. Arthur Ochieng (Principal)"
+  },
+  {
+    "id": "ann-2",
+    "schoolId": "school-sop-001",
+    "title": "Term 1 School Fee Balance Payment Notice",
+    "channel": "SMS & WHATSAPP",
+    "targetRole": "PARENTS WITH ARREARS",
+    "content": "Notice to guardians: Term 1 fee balances must be cleared by October 31st via M-Pesa Paybill 522123, Account: [Admission Number].",
+    "publishedAt": "2026-10-06T14:00:00Z",
+    "status": "PUBLISHED",
+    "author": "Peter Kipkorir (Bursar)"
+  },
+  {
+    "id": "ann-3",
+    "schoolId": "school-sop-001",
+    "title": "Inter-School Swimming Gala & Athletics Trials",
+    "channel": "IN-APP",
+    "targetRole": "STUDENTS & STAFF",
+    "content": "The annual Karen Interschool Swimming Championship takes place at Brookhouse School Karen on Saturday, 18th October.",
+    "publishedAt": "2026-10-04T10:15:00Z",
+    "status": "PUBLISHED",
+    "author": "Coach Dennis Mutiso"
+  }
+]

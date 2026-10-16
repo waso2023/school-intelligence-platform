@@ -1,0 +1,50 @@
+[
+  {
+    "id": "rt-1",
+    "schoolId": "school-sop-001",
+    "name": "Route 1: Kilimani - Kileleshwa - Lavington",
+    "busReg": "KDF 432B",
+    "capacity": 33,
+    "driverName": "Mwangi Karanja",
+    "driverPhone": "+254 722 789 012",
+    "stops": [
+      "Yaya Centre",
+      "Valley Arcade",
+      "QuickMart Lavington",
+      "School Gate"
+    ],
+    "enrolledStudents": 28
+  },
+  {
+    "id": "rt-2",
+    "schoolId": "school-sop-001",
+    "name": "Route 2: Karen - Langata - Hardy",
+    "busReg": "KCP 891Z",
+    "capacity": 33,
+    "driverName": "Joseph Otieno",
+    "driverPhone": "+254 733 456 789",
+    "stops": [
+      "Hardy Shopping Centre",
+      "Galleria Mall",
+      "Langata Road Total",
+      "School Gate"
+    ],
+    "enrolledStudents": 31
+  },
+  {
+    "id": "rt-3",
+    "schoolId": "school-sop-001",
+    "name": "Route 3: Westlands - Spring Valley - Parklands",
+    "busReg": "KDG 102M",
+    "capacity": 25,
+    "driverName": "Francis Chege",
+    "driverPhone": "+254 710 234 567",
+    "stops": [
+      "Sarit Centre",
+      "Westgate Mall",
+      "Parklands Highridge",
+      "School Gate"
+    ],
+    "enrolledStudents": 22
+  }
+]
