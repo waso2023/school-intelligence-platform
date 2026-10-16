@@ -14,8 +14,8 @@ export function DashboardShell({ session, children }: DashboardShellProps) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-[#f0f2f5] flex">
-      {/* Sidebar (Akkhor Theme Navigation) */}
+    <div className="min-h-screen bg-slate-50 flex">
+      {/* Sidebar (Permission-aware) */}
       <Sidebar
         userPermissions={session.permissions}
         userRole={session.role}
@@ -31,7 +31,7 @@ export function DashboardShell({ session, children }: DashboardShellProps) {
           user={session}
           onOpenSidebar={() => setSidebarOpen(true)}
         />
-        <main className="flex-1 p-4 md:p-6 lg:p-7 w-full">
+        <main className="flex-1 p-4 md:p-6 lg:p-8 max-w-7xl w-full mx-auto">
           {children}
         </main>
       </div>

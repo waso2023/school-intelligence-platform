@@ -27,39 +27,26 @@ import { RoleBadge } from "@/components/dashboard/role-badge";
 import { TeacherDashboard } from "@/components/dashboard/teacher-dashboard";
 import { ReceptionistDashboard } from "@/components/dashboard/receptionist-dashboard";
 import { FacultyMonitor } from "@/components/dashboard/faculty-monitor";
-import { ParentDashboardAkkhor } from "@/components/dashboard/parent-dashboard-akkhor";
 import {
   getTeacherProfile,
   getStudentsForTeacher,
   getFacultySupervisionSummary,
 } from "@/lib/teachers/teachers-service";
 
-export default async function DashboardPage({
-  searchParams,
-}: {
-  searchParams?: Promise<{ view?: string }>;
-}) {
+export default async function DashboardPage() {
   const session = await getSession();
 
   if (!session) {
     redirect("/login");
   }
 
-  const params = searchParams ? await searchParams : {};
-  const currentView = params?.view;
-
   const role = session.role;
-  const isParent = currentView === "parents" || (role === "PARENT" && !currentView);
-  const isStudent = currentView === "student" || (role === "STUDENT" && !currentView);
-  const isSuperAdmin = currentView === "admin" || (!currentView && (role === "SUPER_ADMIN" || role === "SCHOOL_ADMIN" || role === "PRINCIPAL"));
-  const isTeacher = !currentView && role === "TEACHER";
-  const isFinance = !currentView && role === "FINANCE_OFFICER";
-  const isReceptionist = !currentView && role === "RECEPTIONIST";
-
-  // If Parent View is active (either Parent role or clicked > Parents in sidebar), render exact Akkhor screenshot layout
-  if (isParent) {
-    return <ParentDashboardAkkhor />;
-  }
+  const isSuperAdmin = role === "SUPER_ADMIN" || role === "SCHOOL_ADMIN" || role === "PRINCIPAL";
+  const isTeacher = role === "TEACHER";
+  const isFinance = role === "FINANCE_OFFICER";
+  const isReceptionist = role === "RECEPTIONIST";
+  const isParent = role === "PARENT";
+  const isStudent = role === "STUDENT";
 
   const teacherProfile = isTeacher ? getTeacherProfile(session.email || session.name) : null;
   const teacherStudents = isTeacher ? getStudentsForTeacher(session.email || session.name) : [];

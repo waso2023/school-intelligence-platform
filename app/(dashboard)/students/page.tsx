@@ -17,13 +17,8 @@ import {
   CheckCircle2,
   Clock,
   Phone,
-  RotateCw,
-  Minus,
-  X,
-  Eye,
-  Edit,
-  Trash2,
 } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { StudentAdmissionDialog } from "@/components/students/student-admission-dialog";
 
 export default function StudentsDirectoryPage() {
@@ -77,135 +72,84 @@ export default function StudentsDirectoryPage() {
   };
 
   return (
-    <div className="space-y-5 animate-in fade-in duration-200">
-      {/* Breadcrumb Navigation (Akkhor Style) */}
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2 text-xs text-slate-500 font-medium">
-          <Link href="/dashboard" className="text-slate-600 hover:text-[#ffbc00] transition-colors">
-            Home
-          </Link>
-          <span>-</span>
-          <span className="text-[#ffbc00] font-bold">Students</span>
-        </div>
-
-        <div className="text-xs text-slate-400 font-medium">
-          SOP School Management System
-        </div>
-      </div>
-
+    <div className="space-y-6 animate-in fade-in duration-200">
       {/* Page Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-xl font-bold text-[#042954] flex items-center gap-2">
-            <Users className="h-5 w-5 text-[#ffbc00]" />
+          <h1 className="text-xl font-bold text-slate-900 flex items-center gap-2">
+            <Users className="h-5 w-5 text-emerald-600" />
             Student Management & Academic Records
           </h1>
           <p className="text-xs text-slate-500">
-            SOP School Management System • {students.length} Enrolled Students across CBC & Cambridge
+            SOP International Academy • {students.length} Enrolled Students across CBC & Cambridge
           </p>
         </div>
 
         <div className="flex items-center gap-2">
-          <button
-            type="button"
+          <Button
+            variant="emerald"
+            size="sm"
             onClick={() => setIsAdmitDialogOpen(true)}
-            className="px-4 py-2 bg-[#ffbc00] hover:bg-[#e5a800] text-slate-950 font-bold rounded shadow-xs flex items-center gap-2 text-xs transition-colors"
+            className="gap-2 shadow-sm shadow-emerald-600/20"
           >
             <UserPlus className="h-4 w-4" />
             <span>Admit New Student</span>
-          </button>
+          </Button>
         </div>
       </div>
 
-      {/* Subnavigation Bar (Akkhor Navy & Gold Theme) */}
-      <div className="flex border-b border-slate-200 gap-6 text-xs font-semibold overflow-x-auto bg-white px-5 pt-3.5 rounded-t-md shadow-2xs">
+      {/* Subnavigation Bar */}
+      <div className="flex border-b border-slate-200 gap-6 text-xs font-semibold overflow-x-auto">
         <Link
           href="/students"
-          className="pb-3 border-b-2 border-[#ffbc00] text-[#042954] font-bold whitespace-nowrap flex items-center gap-1.5"
+          className="pb-2.5 border-b-2 border-emerald-600 text-emerald-700 whitespace-nowrap"
         >
-          <span>All Students</span>
-          <span className="bg-[#ffbc00] text-slate-950 px-1.5 py-0.2 rounded-full text-[10px] font-bold">
-            {students.length}
-          </span>
+          All Students ({students.length})
         </Link>
         <Link
           href="/students/classes"
-          className="pb-3 text-slate-500 hover:text-slate-900 transition-colors whitespace-nowrap"
+          className="pb-2.5 text-slate-500 hover:text-slate-900 transition-colors whitespace-nowrap"
         >
           Classes & Streams
         </Link>
         <Link
           href="/students/subjects"
-          className="pb-3 text-slate-500 hover:text-slate-900 transition-colors whitespace-nowrap"
+          className="pb-2.5 text-slate-500 hover:text-slate-900 transition-colors whitespace-nowrap"
         >
           Subjects & Curriculum
         </Link>
         <Link
           href="/students/attendance"
-          className="pb-3 text-slate-500 hover:text-slate-900 transition-colors whitespace-nowrap"
+          className="pb-2.5 text-slate-500 hover:text-slate-900 transition-colors whitespace-nowrap"
         >
           Daily Attendance Register
         </Link>
         <Link
           href="/students/exams"
-          className="pb-3 text-slate-500 hover:text-slate-900 transition-colors whitespace-nowrap"
+          className="pb-2.5 text-slate-500 hover:text-slate-900 transition-colors whitespace-nowrap"
         >
           Exams, Results & Rankings
         </Link>
       </div>
 
-      {/* Main Container Card (Akkhor Style) */}
-      <div className="bg-white rounded-md shadow-xs border border-slate-200/90 overflow-hidden">
-        {/* Card Header & Controls */}
-        <div className="px-5 py-3.5 border-b border-slate-100 flex items-center justify-between">
-          <h3 className="font-bold text-slate-800 text-sm tracking-tight flex items-center gap-2">
-            <GraduationCap className="h-4 w-4 text-[#042954]" />
-            All Students Directory
-          </h3>
-
-          <div className="flex items-center gap-1.5 text-slate-400">
-            <button
-              type="button"
-              onClick={handleRefresh}
-              title="Refresh list"
-              className="p-1 hover:text-emerald-500 transition-colors"
-            >
-              <RotateCw className="h-3.5 w-3.5 text-emerald-500" />
-            </button>
-            <button
-              type="button"
-              title="Minimize"
-              className="p-1 hover:text-[#ffbc00] transition-colors"
-            >
-              <Minus className="h-3.5 w-3.5" />
-            </button>
-            <button
-              type="button"
-              title="Close"
-              className="p-1 hover:text-rose-500 transition-colors"
-            >
-              <X className="h-3.5 w-3.5 text-rose-500" />
-            </button>
-          </div>
+      {/* Filter and Search Toolbar */}
+      <div className="flex flex-col sm:flex-row gap-3">
+        <div className="relative flex-1">
+          <Search className="h-4 w-4 absolute left-3 top-3 text-slate-400" />
+          <input
+            type="text"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            placeholder="Search by student name, admission number, or parent phone..."
+            className="w-full pl-9 pr-4 py-2.5 text-xs rounded-xl border border-slate-300 bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500 text-slate-900 shadow-2xs"
+          />
         </div>
 
-        {/* Filter and Search Toolbar (Akkhor Search Controls) */}
-        <div className="p-4 bg-slate-50/70 border-b border-slate-100 flex flex-wrap items-center gap-3 text-xs">
-          <div className="relative flex-1 min-w-[240px]">
-            <Search className="h-3.5 w-3.5 absolute left-3 top-2.5 text-slate-400" />
-            <input
-              type="text"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              placeholder="Search by student name, admission number, or phone..."
-              className="w-full pl-9 pr-3 py-1.5 bg-white border border-slate-200 rounded focus:outline-none focus:ring-1 focus:ring-[#ffbc00] text-slate-900"
-            />
-          </div>
-
+        <div className="flex gap-2">
           <select
             value={selectedClass}
             onChange={(e) => setSelectedClass(e.target.value)}
-            className="px-3 py-1.5 bg-white border border-slate-200 rounded focus:outline-none focus:ring-1 focus:ring-[#ffbc00] text-slate-700"
+            className="px-3 py-2 text-xs rounded-xl border border-slate-300 bg-white text-slate-700 focus:outline-none focus:ring-2 focus:ring-emerald-500"
           >
             <option>All Classes</option>
             {DEMO_CLASSES.map((c) => (
@@ -218,7 +162,7 @@ export default function StudentsDirectoryPage() {
           <select
             value={selectedStatus}
             onChange={(e) => setSelectedStatus(e.target.value)}
-            className="px-3 py-1.5 bg-white border border-slate-200 rounded focus:outline-none focus:ring-1 focus:ring-[#ffbc00] text-slate-700"
+            className="px-3 py-2 text-xs rounded-xl border border-slate-300 bg-white text-slate-700 focus:outline-none focus:ring-2 focus:ring-emerald-500"
           >
             <option value="ALL">Status: All</option>
             <option value="ACTIVE">Active</option>
@@ -226,32 +170,27 @@ export default function StudentsDirectoryPage() {
             <option value="GRADUATED">Graduated</option>
             <option value="SUSPENDED">Suspended</option>
           </select>
-
-          <button
-            type="button"
-            className="px-5 py-1.5 bg-[#042954] hover:bg-[#073b75] text-white font-bold rounded text-xs transition-colors"
-          >
-            SEARCH
-          </button>
         </div>
+      </div>
 
-        {/* Students Data Table */}
+      {/* Students Data Table */}
+      <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-xs">
         <div className="overflow-x-auto">
-          <table className="w-full text-left text-xs text-slate-700">
-            <thead className="bg-[#042954] text-white font-semibold text-[11px]">
+          <table className="w-full text-left text-xs">
+            <thead className="bg-slate-50 border-b border-slate-200 text-slate-600 uppercase text-[10px] tracking-wider">
               <tr>
                 <th className="py-3 px-4">Student</th>
                 <th className="py-3 px-4">Adm No.</th>
                 <th className="py-3 px-4">Class & Stream</th>
                 <th className="py-3 px-4">Parent / Contact</th>
-                <th className="py-3 px-3 text-center">Term Average</th>
-                <th className="py-3 px-3 text-center">Attendance</th>
-                <th className="py-3 px-4 text-center">Fee Balance</th>
-                <th className="py-3 px-3 text-center">Status</th>
-                <th className="py-3 px-4 text-right">Action</th>
+                <th className="py-3 px-4">Term Average</th>
+                <th className="py-3 px-4">Attendance</th>
+                <th className="py-3 px-4">Fee Balance</th>
+                <th className="py-3 px-4">Status</th>
+                <th className="py-3 px-4 text-right">Profile</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-100">
+            <tbody className="divide-y divide-slate-100 text-slate-800">
               {filteredStudents.map((std) => (
                 <tr key={std.id} className="hover:bg-slate-50/80 transition-colors">
                   <td className="py-3 px-4">
@@ -260,12 +199,12 @@ export default function StudentsDirectoryPage() {
                       <img
                         src={std.photoUrl}
                         alt={std.firstName}
-                        className="h-9 w-9 rounded-md object-cover border border-slate-200"
+                        className="h-8 w-8 rounded-full object-cover border border-slate-200"
                       />
                       <div>
                         <Link
                           href={`/students/${std.id}`}
-                          className="font-bold text-[#042954] hover:text-[#ffbc00] hover:underline block"
+                          className="font-bold text-slate-900 hover:text-emerald-700 hover:underline block"
                         >
                           {std.firstName} {std.lastName}
                         </Link>
@@ -273,7 +212,7 @@ export default function StudentsDirectoryPage() {
                       </div>
                     </div>
                   </td>
-                  <td className="py-3 px-4 font-mono font-bold text-[#042954]">
+                  <td className="py-3 px-4 font-mono font-medium text-emerald-700">
                     {std.admissionNumber}
                   </td>
                   <td className="py-3 px-4 text-slate-600">
@@ -281,43 +220,41 @@ export default function StudentsDirectoryPage() {
                     <span className="text-slate-400 ml-1">({std.streamName})</span>
                   </td>
                   <td className="py-3 px-4">
-                    <div className="text-slate-800 font-semibold">{std.parent.fullName}</div>
+                    <div className="text-slate-800 font-medium">{std.parent.fullName}</div>
                     <div className="text-slate-400 text-[10px] flex items-center gap-1 font-mono">
                       <Phone className="h-2.5 w-2.5" /> {std.parent.phone}
                     </div>
                   </td>
-                  <td className="py-3 px-3 text-center font-bold">
-                    <span className={std.academic.currentTermAverage < 65 ? "text-[#ff4d4f]" : "text-slate-900"}>
+                  <td className="py-3 px-4 font-semibold">
+                    <span className={std.academic.currentTermAverage < 65 ? "text-rose-600 font-bold" : "text-slate-900"}>
                       {std.academic.currentTermAverage}%
                     </span>
                   </td>
-                  <td className="py-3 px-3 text-center">
+                  <td className="py-3 px-4">
                     <span
-                      className={`font-bold px-2 py-0.5 rounded text-[11px] ${
-                        std.attendance.rate < 90
-                          ? "bg-amber-100 text-amber-900"
-                          : "bg-[#52c41a]/15 text-[#52c41a]"
+                      className={`font-semibold ${
+                        std.attendance.rate < 90 ? "text-amber-600 font-bold" : "text-emerald-700"
                       }`}
                     >
                       {std.attendance.rate}%
                     </span>
                   </td>
-                  <td className="py-3 px-4 text-center">
+                  <td className="py-3 px-4">
                     <span
-                      className={`px-2 py-0.5 rounded text-[10px] font-bold ${
+                      className={`px-2 py-0.5 rounded text-[10px] font-semibold ${
                         std.fees.balance === 0
-                          ? "bg-[#52c41a]/15 text-[#52c41a]"
-                          : "bg-[#ff4d4f]/15 text-[#ff4d4f]"
+                          ? "bg-emerald-50 text-emerald-700 border border-emerald-200"
+                          : "bg-amber-50 text-amber-800 border border-amber-200"
                       }`}
                     >
                       {std.fees.balance === 0 ? "Cleared" : formatKES(std.fees.balance)}
                     </span>
                   </td>
-                  <td className="py-3 px-3 text-center">
+                  <td className="py-3 px-4">
                     <span
-                      className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${
+                      className={`px-2 py-0.5 rounded-full text-[10px] font-semibold ${
                         std.status === "ACTIVE"
-                          ? "bg-[#52c41a]/15 text-[#52c41a]"
+                          ? "bg-emerald-50 text-emerald-800 border border-emerald-200"
                           : "bg-slate-100 text-slate-700"
                       }`}
                     >
@@ -327,7 +264,7 @@ export default function StudentsDirectoryPage() {
                   <td className="py-3 px-4 text-right">
                     <Link
                       href={`/students/${std.id}`}
-                      className="inline-flex items-center gap-1 text-[#042954] hover:text-[#ffbc00] font-bold hover:underline"
+                      className="inline-flex items-center gap-1 text-emerald-700 font-semibold hover:underline"
                     >
                       <span>View</span>
                       <ArrowRight className="h-3 w-3" />
@@ -337,16 +274,6 @@ export default function StudentsDirectoryPage() {
               ))}
             </tbody>
           </table>
-        </div>
-
-        {/* Table Footer */}
-        <div className="px-5 py-3 border-t border-slate-100 bg-slate-50/50 flex flex-col sm:flex-row sm:items-center justify-between text-slate-500 text-[11px] gap-2">
-          <div>
-            Showing <strong>{filteredStudents.length}</strong> of <strong>{students.length}</strong> enrolled students
-          </div>
-          <div className="flex items-center gap-1">
-            <span className="text-slate-400">SOP School Management System</span>
-          </div>
         </div>
       </div>
 

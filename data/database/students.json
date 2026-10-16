@@ -398,44 +398,35 @@
     },
     "fees": {
       "expectedAmount": 85000,
-      "paidAmount": 106000,
+      "paidAmount": 103000,
       "balance": 0,
       "status": "PAID",
       "dueDate": "2026-10-25",
       "transactions": [
         {
-          "id": "pay-1792180315756",
-          "receiptNumber": "REC-2026-0109",
+          "id": "pay-1792181262929",
+          "receiptNumber": "REC-2026-0107",
           "amount": 3000,
           "method": "MPESA",
-          "reference": "QWE0315751",
+          "reference": "QWE1262923",
           "date": "16 Oct 2026",
           "balanceAfter": 0
         },
         {
-          "id": "pay-1792180315400",
-          "receiptNumber": "REC-2026-0108",
+          "id": "pay-1792181262699",
+          "receiptNumber": "REC-2026-0106",
           "amount": 1000,
           "method": "MPESA",
-          "reference": "DUP-TXN-1792180315400",
+          "reference": "DUP-TXN-1792181262699",
           "date": "16 Oct 2026",
           "balanceAfter": 0
         },
         {
-          "id": "pay-1792180315304",
-          "receiptNumber": "REC-2026-0107",
+          "id": "pay-1792181262554",
+          "receiptNumber": "REC-2026-0105",
           "amount": 5000,
           "method": "MPESA",
-          "reference": "TEST-TXN-1792180315301",
-          "date": "16 Oct 2026",
-          "balanceAfter": 0
-        },
-        {
-          "id": "pay-1792178394156",
-          "receiptNumber": "REC-2026-0106",
-          "amount": 3000,
-          "method": "MPESA",
-          "reference": "QWE8394117",
+          "reference": "TEST-TXN-1792181262549",
           "date": "16 Oct 2026",
           "balanceAfter": 0
         },

@@ -14,9 +14,6 @@ import {
   BarChart3,
   Calendar,
   Layers,
-  RotateCw,
-  Minus,
-  X,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -49,7 +46,7 @@ const TERM_TREND_DATA = [
   { term: "2025 Term 1", Grade7: 71.2, Grade8: 69.5, Year10: 72.4 },
   { term: "2025 Term 2", Grade7: 72.8, Grade8: 70.1, Year10: 74.0 },
   { term: "2025 Term 3", Grade7: 74.5, Grade8: 71.4, Year10: 75.8 },
-  { term: "2026 Term 1", Grade7: 75.1, Grade8: 68.2, Year10: 71.6 },
+  { term: "2026 Term 1", Grade7: 75.1, Grade8: 68.2, Year10: 71.6 }, // Note Grade 8 drop!
 ];
 
 const SUBJECT_PERFORMANCE_DATA = [
@@ -104,32 +101,32 @@ export default function ExamsAndResultsPage() {
       admNo: "SOP-2024-0082",
       marks: 79,
       percentage: 79.0,
-      grade: "B+",
-      previousTerm: 76.0,
-      trend: "UP",
-      remarks: "Strong effort in algebraic topics.",
+      grade: "A-",
+      previousTerm: 78.0,
+      trend: "STABLE",
+      remarks: "Very solid effort; slight improvement in geometry.",
     },
     {
       rank: 4,
       studentId: "std-005",
-      name: "Natasha Nduta",
-      admNo: "SOP-2024-0088",
-      marks: 71,
-      percentage: 71.0,
+      name: "Imani Chebet",
+      admNo: "SOP-2024-0086",
+      marks: 68,
+      percentage: 68.0,
       grade: "B",
-      previousTerm: 73.0,
+      previousTerm: 78.0,
       trend: "DOWN",
-      remarks: "Satisfactory, needs more geometry practice.",
+      remarks: "Noticeable drop in exam timing. Needs coursework review.",
     },
     {
       rank: 5,
       studentId: "std-003",
       name: "Zawadi Muthoni",
       admNo: "SOP-2024-0084",
-      marks: 58,
-      percentage: 58.0,
-      grade: "C+",
-      previousTerm: 73.5,
+      marks: 59,
+      percentage: 59.0,
+      grade: "C",
+      previousTerm: 74.0,
       trend: "DOWN",
       remarks: "Significant academic decline (-15%). Remedial action required.",
     },
@@ -171,7 +168,9 @@ export default function ExamsAndResultsPage() {
       remarks: remarks.trim() || "Performance recorded in Term 1 assessment register.",
     };
 
+    // Combine and sort by marks descending
     const updated = [...studentGrades, newEntry].sort((a, b) => b.marks - a.marks);
+    // Assign ranks
     const ranked = updated.map((entry, index) => ({
       ...entry,
       rank: index + 1,
@@ -179,36 +178,24 @@ export default function ExamsAndResultsPage() {
 
     setStudentGrades(ranked);
     setIsCreateOpen(false);
-    setSuccessMsg(`Exam results for "${newEntry.name}" recorded & rankings updated!`);
+    setSuccessMsg(`Exam results for ${newEntry.name} (${newEntry.marks}%, Grade ${newEntry.grade}) recorded and ranked successfully!`);
     setTimeout(() => setSuccessMsg(null), 4000);
+
     setStudentName("");
+    setAdmNo("");
     setMarks("");
     setRemarks("");
   };
 
+  // Flagged students with significant academic decline (drop > 10%)
   const declineFlaggedStudents = studentGrades.filter(
     (s) => s.previousTerm - s.percentage >= 10
   );
 
   return (
-    <div className="space-y-5 animate-in fade-in duration-200">
-      {/* Breadcrumb Navigation (Akkhor Style) */}
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2 text-xs text-slate-500 font-medium">
-          <Link href="/dashboard" className="text-slate-600 hover:text-[#ffbc00] transition-colors">
-            Home
-          </Link>
-          <span>-</span>
-          <span className="text-[#ffbc00] font-bold">Exams</span>
-        </div>
-
-        <div className="text-xs text-slate-400 font-medium">
-          SOP School Management System
-        </div>
-      </div>
-
+    <div className="space-y-6 animate-in fade-in duration-200">
       {successMsg && (
-        <div className="p-3.5 rounded-md bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs flex items-center gap-2 font-medium shadow-xs">
+        <div className="p-3.5 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs flex items-center gap-2 font-medium">
           <CheckCircle2 className="h-4 w-4 text-emerald-600 shrink-0" />
           <span>{successMsg}</span>
         </div>
@@ -217,68 +204,69 @@ export default function ExamsAndResultsPage() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-xl font-bold text-[#042954] flex items-center gap-2">
-            <Award className="h-5 w-5 text-[#ffbc00]" />
+          <h1 className="text-xl font-bold text-slate-900 flex items-center gap-2">
+            <Award className="h-5 w-5 text-emerald-600" />
             Exams, Grading & Visual Performance Trends
           </h1>
           <p className="text-xs text-slate-500">
-            SOP School Management System • Term assessments, automated rankings, CBC grade conversions & trend analysis
+            Term assessments, automated rankings, CBC grade conversions & trend analysis
           </p>
         </div>
 
-        <button
-          type="button"
+        <Button
+          variant="emerald"
+          size="sm"
+          className="gap-2 shadow-sm"
           onClick={() => setIsCreateOpen(true)}
-          className="px-4 py-2 bg-[#ffbc00] hover:bg-[#e5a800] text-slate-950 font-bold rounded shadow-xs flex items-center gap-2 text-xs transition-colors"
         >
           <PlusCircle className="h-4 w-4" />
           <span>Enter New Exam Results</span>
-        </button>
+        </Button>
       </div>
 
-      {/* Subnavigation Bar (Akkhor Navy & Gold Theme) */}
-      <div className="flex border-b border-slate-200 gap-6 text-xs font-semibold overflow-x-auto bg-white px-5 pt-3.5 rounded-t-md shadow-2xs">
+      {/* Subnavigation Bar */}
+      <div className="flex border-b border-slate-200 gap-6 text-xs font-semibold overflow-x-auto">
         <Link
           href="/students"
-          className="pb-3 text-slate-500 hover:text-slate-900 transition-colors whitespace-nowrap"
+          className="pb-2.5 text-slate-500 hover:text-slate-900 transition-colors whitespace-nowrap"
         >
           All Students
         </Link>
         <Link
           href="/students/classes"
-          className="pb-3 text-slate-500 hover:text-slate-900 transition-colors whitespace-nowrap"
+          className="pb-2.5 text-slate-500 hover:text-slate-900 transition-colors whitespace-nowrap"
         >
           Classes & Streams
         </Link>
         <Link
           href="/students/subjects"
-          className="pb-3 text-slate-500 hover:text-slate-900 transition-colors whitespace-nowrap"
+          className="pb-2.5 text-slate-500 hover:text-slate-900 transition-colors whitespace-nowrap"
         >
           Subjects & Curriculum
         </Link>
         <Link
           href="/students/attendance"
-          className="pb-3 text-slate-500 hover:text-slate-900 transition-colors whitespace-nowrap"
+          className="pb-2.5 text-slate-500 hover:text-slate-900 transition-colors whitespace-nowrap"
         >
           Daily Attendance Register
         </Link>
         <Link
           href="/students/exams"
-          className="pb-3 border-b-2 border-[#ffbc00] text-[#042954] font-bold whitespace-nowrap flex items-center gap-1.5"
+          className="pb-2.5 border-b-2 border-emerald-600 text-emerald-700 whitespace-nowrap"
         >
-          <span>Exams, Results & Rankings</span>
+          Exams, Results & Rankings
         </Link>
       </div>
 
       {/* Flagged Significant Decline Banner */}
       {declineFlaggedStudents.length > 0 && (
-        <div className="p-4 rounded-md bg-rose-50 border border-rose-200 text-rose-950 text-xs flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-xs">
+        <div className="p-4 rounded-xl bg-rose-50 border border-rose-200 text-rose-950 text-xs flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div className="flex items-center gap-3">
-            <div className="h-9 w-9 rounded-md bg-[#ff4d4f] text-white flex items-center justify-center shrink-0 font-bold">
+            <div className="h-9 w-9 rounded-xl bg-rose-200 text-rose-900 flex items-center justify-center shrink-0">
               <TrendingDown className="h-5 w-5" />
             </div>
             <div>
-              <span className="font-bold text-rose-950">
+              <span className="font-bold text-rose-900">
                 AI Academic Decline Alert: {declineFlaggedStudents.length} Students Flagged
               </span>
               <p className="text-rose-800 text-[11px] mt-0.5">
@@ -295,7 +283,7 @@ export default function ExamsAndResultsPage() {
           </div>
           <Link
             href="/intelligence"
-            className="text-xs font-bold text-white bg-[#042954] hover:bg-[#073b75] px-3.5 py-1.5 rounded transition-colors shrink-0"
+            className="text-xs font-semibold text-rose-900 bg-rose-200 hover:bg-rose-300 px-3 py-1.5 rounded-lg transition-colors shrink-0"
           >
             Open AI Intervention Suite →
           </Link>
@@ -305,16 +293,16 @@ export default function ExamsAndResultsPage() {
       {/* Visual Analytics Section with Recharts */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 text-xs">
         {/* Term-over-Term Trend Chart */}
-        <div className="p-5 rounded-md bg-white border border-slate-200/90 shadow-xs space-y-4">
-          <div className="flex items-center justify-between border-b border-slate-100 pb-2">
+        <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-4">
+          <div className="flex items-center justify-between">
             <div>
-              <h3 className="font-bold text-[#042954] text-sm flex items-center gap-2">
-                <BarChart3 className="h-4 w-4 text-[#ffbc00]" />
+              <h3 className="font-bold text-slate-900 text-sm flex items-center gap-2">
+                <BarChart3 className="h-4 w-4 text-emerald-600" />
                 Term-over-Term Grade Progression
               </h3>
               <p className="text-slate-500 text-[11px]">Academic performance trajectory by grade level</p>
             </div>
-            <span className="text-[10px] font-mono bg-[#042954]/10 text-[#042954] px-2 py-0.5 rounded font-bold border border-[#042954]/20">
+            <span className="text-[10px] font-mono bg-emerald-50 text-emerald-800 px-2 py-0.5 rounded font-bold border border-emerald-200">
               Multi-Term
             </span>
           </div>
@@ -327,9 +315,9 @@ export default function ExamsAndResultsPage() {
                 <YAxis domain={[55, 90]} stroke="#64748b" fontSize={11} />
                 <Tooltip
                   contentStyle={{
-                    backgroundColor: "#042954",
-                    borderColor: "#073b75",
-                    borderRadius: "6px",
+                    backgroundColor: "#0f172a",
+                    borderColor: "#334155",
+                    borderRadius: "8px",
                     color: "#fff",
                     fontSize: "11px",
                   }}
@@ -338,7 +326,7 @@ export default function ExamsAndResultsPage() {
                 <Line
                   type="monotone"
                   dataKey="Grade7"
-                  stroke="#52c41a"
+                  stroke="#10b981"
                   strokeWidth={2.5}
                   name="Grade 7 (CBC)"
                   dot={{ r: 4 }}
@@ -346,7 +334,7 @@ export default function ExamsAndResultsPage() {
                 <Line
                   type="monotone"
                   dataKey="Grade8"
-                  stroke="#ff4d4f"
+                  stroke="#f43f5e"
                   strokeWidth={2.5}
                   name="Grade 8 (Declining)"
                   dot={{ r: 4 }}
@@ -354,7 +342,7 @@ export default function ExamsAndResultsPage() {
                 <Line
                   type="monotone"
                   dataKey="Year10"
-                  stroke="#1890ff"
+                  stroke="#3b82f6"
                   strokeWidth={2.5}
                   name="Year 10 (IGCSE)"
                   dot={{ r: 4 }}
@@ -365,11 +353,11 @@ export default function ExamsAndResultsPage() {
         </div>
 
         {/* Subject Average vs Benchmark Chart */}
-        <div className="p-5 rounded-md bg-white border border-slate-200/90 shadow-xs space-y-4">
-          <div className="flex items-center justify-between border-b border-slate-100 pb-2">
+        <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-4">
+          <div className="flex items-center justify-between">
             <div>
-              <h3 className="font-bold text-[#042954] text-sm flex items-center gap-2">
-                <BookOpen className="h-4 w-4 text-[#ffbc00]" />
+              <h3 className="font-bold text-slate-900 text-sm flex items-center gap-2">
+                <BookOpen className="h-4 w-4 text-emerald-600" />
                 Subject Average vs School Benchmark (75%)
               </h3>
               <p className="text-slate-500 text-[11px]">Departmental performance comparison</p>
@@ -387,16 +375,16 @@ export default function ExamsAndResultsPage() {
                 <YAxis domain={[50, 100]} stroke="#64748b" fontSize={11} />
                 <Tooltip
                   contentStyle={{
-                    backgroundColor: "#042954",
-                    borderColor: "#073b75",
-                    borderRadius: "6px",
+                    backgroundColor: "#0f172a",
+                    borderColor: "#334155",
+                    borderRadius: "8px",
                     color: "#fff",
                     fontSize: "11px",
                   }}
                 />
                 <Legend wrapperStyle={{ fontSize: "11px", paddingTop: "10px" }} />
-                <Bar dataKey="average" fill="#042954" radius={[4, 4, 0, 0]} name="Class Average (%)" />
-                <Bar dataKey="target" fill="#ffbc00" radius={[4, 4, 0, 0]} name="Target Benchmark (%)" />
+                <Bar dataKey="average" fill="#059669" radius={[4, 4, 0, 0]} name="Class Average (%)" />
+                <Bar dataKey="target" fill="#cbd5e1" radius={[4, 4, 0, 0]} name="Target Benchmark (%)" />
               </BarChart>
             </ResponsiveContainer>
           </div>
@@ -404,8 +392,8 @@ export default function ExamsAndResultsPage() {
       </div>
 
       {/* Gradebook and Rankings Table */}
-      <div className="bg-white rounded-md border border-slate-200/90 overflow-hidden shadow-xs text-xs">
-        <div className="p-4 bg-slate-50/70 border-b border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+      <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-xs text-xs">
+        <div className="p-4 bg-slate-50 border-b border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div>
             <h3 className="font-bold text-slate-900">
               Mathematics Term 1 Mid-Term Gradebook & Official Rankings
@@ -419,7 +407,7 @@ export default function ExamsAndResultsPage() {
             <select
               value={selectedExam}
               onChange={(e) => setSelectedExam(e.target.value)}
-              className="px-3 py-1.5 text-xs rounded border border-slate-200 bg-white font-semibold text-slate-800 focus:outline-none focus:ring-1 focus:ring-[#ffbc00]"
+              className="px-3 py-1.5 text-xs rounded-lg border border-slate-300 bg-white font-semibold text-slate-800 focus:ring-2 focus:ring-emerald-500"
             >
               {EXAMS_DATA.map((e) => (
                 <option key={e.id} value={e.id}>
@@ -432,15 +420,15 @@ export default function ExamsAndResultsPage() {
 
         <div className="overflow-x-auto">
           <table className="w-full text-left">
-            <thead className="bg-[#042954] text-white uppercase text-[10px] border-b border-slate-200 font-semibold">
+            <thead className="bg-white text-slate-500 uppercase text-[10px] border-b border-slate-200">
               <tr>
                 <th className="py-3 px-4">Position</th>
                 <th className="py-3 px-4">Student</th>
                 <th className="py-3 px-4">Adm No.</th>
-                <th className="py-3 px-4 text-center">Marks (100)</th>
-                <th className="py-3 px-4 text-center">Grade</th>
-                <th className="py-3 px-4 text-center">Previous Term</th>
-                <th className="py-3 px-4 text-center">Trend</th>
+                <th className="py-3 px-4">Marks (100)</th>
+                <th className="py-3 px-4">Grade</th>
+                <th className="py-3 px-4">Previous Term</th>
+                <th className="py-3 px-4">Trend</th>
                 <th className="py-3 px-4">Teacher Evaluation Remarks</th>
               </tr>
             </thead>
@@ -451,54 +439,54 @@ export default function ExamsAndResultsPage() {
                     <span
                       className={`inline-flex items-center justify-center h-6 w-6 rounded-full font-bold text-xs ${
                         g.rank === 1
-                          ? "bg-[#ffbc00] text-slate-950 font-bold shadow-2xs"
+                          ? "bg-amber-100 text-amber-900 border border-amber-300"
                           : g.rank === 2
                           ? "bg-slate-200 text-slate-800"
                           : g.rank === 3
-                          ? "bg-amber-100 text-amber-900"
+                          ? "bg-amber-50 text-amber-800"
                           : "text-slate-600"
                       }`}
                     >
                       {g.rank}
                     </span>
                   </td>
-                  <td className="py-3 px-4 font-bold text-slate-900">
+                  <td className="py-3 px-4 font-semibold text-slate-900">
                     <Link
                       href={`/students/${g.studentId}`}
-                      className="hover:text-[#ffbc00] hover:underline"
+                      className="hover:text-emerald-700 hover:underline"
                     >
                       {g.name}
                     </Link>
                   </td>
-                  <td className="py-3 px-4 font-mono font-bold text-[#042954]">
+                  <td className="py-3 px-4 font-mono font-medium text-slate-600">
                     {g.admNo}
                   </td>
-                  <td className="py-3 px-4 text-center font-bold text-slate-900">
+                  <td className="py-3 px-4 font-bold text-slate-900">
                     {g.marks}
                   </td>
-                  <td className="py-3 px-4 text-center">
+                  <td className="py-3 px-4">
                     <span
-                      className={`font-bold px-2.5 py-0.5 rounded text-[11px] ${
+                      className={`font-bold px-2 py-0.5 rounded text-[10px] ${
                         g.grade.startsWith("A")
-                          ? "bg-[#52c41a] text-white"
+                          ? "bg-emerald-50 text-emerald-800 border border-emerald-200"
                           : g.grade.startsWith("B")
-                          ? "bg-[#1890ff] text-white"
-                          : "bg-[#ffbc00] text-slate-950"
+                          ? "bg-blue-50 text-blue-800 border border-blue-200"
+                          : "bg-amber-50 text-amber-800 border border-amber-200"
                       }`}
                     >
                       {g.grade}
                     </span>
                   </td>
-                  <td className="py-3 px-4 text-center font-medium text-slate-600">
+                  <td className="py-3 px-4 font-medium text-slate-600">
                     {g.previousTerm}%
                   </td>
-                  <td className="py-3 px-4 text-center">
+                  <td className="py-3 px-4">
                     {g.trend === "UP" ? (
-                      <span className="text-[#52c41a] inline-flex items-center gap-1 font-bold">
+                      <span className="text-emerald-700 flex items-center gap-1 font-semibold">
                         <TrendingUp className="h-3.5 w-3.5" /> +{Math.round(g.percentage - g.previousTerm)}%
                       </span>
                     ) : g.trend === "DOWN" ? (
-                      <span className="text-[#ff4d4f] inline-flex items-center gap-1 font-bold">
+                      <span className="text-rose-600 flex items-center gap-1 font-bold">
                         <TrendingDown className="h-3.5 w-3.5" /> -{Math.round(g.previousTerm - g.percentage)}%
                       </span>
                     ) : (
@@ -518,14 +506,14 @@ export default function ExamsAndResultsPage() {
       {/* Enter Exam Results Modal Dialog */}
       {isCreateOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-xs p-4 animate-in fade-in">
-          <div className="w-full max-w-md rounded-md bg-white border border-slate-200 shadow-2xl p-6 space-y-4 text-xs">
+          <div className="w-full max-w-md rounded-2xl bg-white border border-slate-200 shadow-2xl p-6 space-y-4 text-xs">
             <div className="flex items-center justify-between pb-3 border-b border-slate-100">
               <div className="flex items-center gap-2">
-                <div className="p-2 rounded bg-[#ffbc00]/20 text-[#042954]">
+                <div className="p-2 rounded-lg bg-emerald-50 text-emerald-700">
                   <Award className="h-4 w-4" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-[#042954] text-sm">Enter Exam Marks & Evaluation</h3>
+                  <h3 className="font-bold text-slate-900 text-sm">Enter Exam Marks & Evaluation</h3>
                   <p className="text-[11px] text-slate-500">Record score and calculate automatic grade & ranking</p>
                 </div>
               </div>
@@ -547,7 +535,7 @@ export default function ExamsAndResultsPage() {
                   placeholder="e.g. Liam Kipchoge"
                   value={studentName}
                   onChange={(e) => setStudentName(e.target.value)}
-                  className="w-full p-2.5 rounded border border-slate-300 bg-slate-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-[#ffbc00] text-slate-900"
+                  className="w-full p-2.5 rounded-lg border border-slate-300 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500 text-slate-900"
                 />
               </div>
 
@@ -558,7 +546,7 @@ export default function ExamsAndResultsPage() {
                   placeholder="e.g. SOP-2024-0092"
                   value={admNo}
                   onChange={(e) => setAdmNo(e.target.value)}
-                  className="w-full p-2.5 rounded border border-slate-300 bg-slate-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-[#ffbc00] text-slate-900 font-mono"
+                  className="w-full p-2.5 rounded-lg border border-slate-300 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500 text-slate-900 font-mono"
                 />
               </div>
 
@@ -573,7 +561,7 @@ export default function ExamsAndResultsPage() {
                     placeholder="e.g. 82"
                     value={marks}
                     onChange={(e) => setMarks(e.target.value)}
-                    className="w-full p-2.5 rounded border border-slate-300 bg-slate-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-[#ffbc00] text-slate-900 font-bold"
+                    className="w-full p-2.5 rounded-lg border border-slate-300 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500 text-slate-900 font-bold"
                   />
                 </div>
                 <div>
@@ -586,7 +574,7 @@ export default function ExamsAndResultsPage() {
                     placeholder="e.g. 75"
                     value={prevMarks}
                     onChange={(e) => setPrevMarks(e.target.value)}
-                    className="w-full p-2.5 rounded border border-slate-300 bg-slate-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-[#ffbc00] text-slate-900"
+                    className="w-full p-2.5 rounded-lg border border-slate-300 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500 text-slate-900"
                   />
                 </div>
               </div>
@@ -598,24 +586,22 @@ export default function ExamsAndResultsPage() {
                   placeholder="e.g. Commendable improvement in analytical sections."
                   value={remarks}
                   onChange={(e) => setRemarks(e.target.value)}
-                  className="w-full p-2.5 rounded border border-slate-300 bg-slate-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-[#ffbc00] text-slate-900"
+                  className="w-full p-2.5 rounded-lg border border-slate-300 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500 text-slate-900"
                 />
               </div>
 
               <div className="pt-2 flex items-center justify-end gap-2 border-t border-slate-100">
-                <button
+                <Button
                   type="button"
+                  variant="outline"
+                  size="sm"
                   onClick={() => setIsCreateOpen(false)}
-                  className="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded"
                 >
                   Cancel
-                </button>
-                <button
-                  type="submit"
-                  className="px-5 py-2 bg-[#ffbc00] hover:bg-[#e5a800] text-slate-950 font-bold rounded shadow-xs"
-                >
+                </Button>
+                <Button type="submit" variant="emerald" size="sm">
                   Record & Rank Results
-                </button>
+                </Button>
               </div>
             </form>
           </div>

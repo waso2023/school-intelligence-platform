@@ -88,20 +88,20 @@ export default function LoginPage() {
         
         <div>
           <div className="flex items-center gap-3 mb-4">
-            <div className="h-12 w-12 rounded-xl bg-[#ffbc00] flex items-center justify-center text-slate-950 font-black text-xl shadow-lg shadow-amber-500/20">
-              SOP
+            <div className="h-12 w-12 rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-400 flex items-center justify-center text-white shadow-lg shadow-emerald-500/30">
+              <GraduationCap className="h-7 w-7" />
             </div>
             <div>
               <span className="text-xl font-bold tracking-tight text-white block">
-                SOP Management System
+                {DEMO_SCHOOL.name}
               </span>
-              <span className="text-xs uppercase tracking-wider text-amber-400 font-semibold">
-                Enterprise School Intelligence Platform
+              <span className="text-xs uppercase tracking-wider text-emerald-400 font-semibold">
+                School Intelligence Platform
               </span>
             </div>
           </div>
           <p className="text-xs text-slate-400 max-w-sm mt-1">
-            Enterprise Educational Operations & Intelligence System • Nairobi, Kenya
+            {DEMO_SCHOOL.motto} • Karen Campus, Nairobi
           </p>
         </div>
 
