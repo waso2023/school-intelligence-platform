@@ -1,5 +1,16 @@
 [
   {
+    "id": "ann-1792178393104",
+    "schoolId": "school-sop-001",
+    "title": "Science Fair 2026",
+    "channel": "SMS & EMAIL",
+    "targetRole": "ALL",
+    "content": "Annual STEM exhibition holding in Science Quad.",
+    "publishedAt": "2026-10-16T19:19:53.104Z",
+    "status": "PUBLISHED",
+    "author": "Head of Sciences"
+  },
+  {
     "id": "ann-1791891466593",
     "schoolId": "school-sop-001",
     "title": "Science Fair 2026",

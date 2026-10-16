@@ -1,5 +1,34 @@
 [
   {
+    "id": "pay-1792178394240",
+    "schoolId": "school-sop-001",
+    "receiptNumber": "REC-2026-0106",
+    "studentId": "std-001",
+    "amount": 1000,
+    "paymentMethod": "MPESA",
+    "transactionReference": "DUP-TXN-1792178394240",
+    "payerName": "David Kimani",
+    "payerPhone": "+254 722 400 001",
+    "recordedByUserId": "finance.test@sopacademy.ac.ke",
+    "paymentDate": "2026-10-16T19:19:54.240Z",
+    "status": "VERIFIED"
+  },
+  {
+    "id": "pay-1792178394102",
+    "schoolId": "school-sop-001",
+    "receiptNumber": "REC-2026-0105",
+    "studentId": "std-001",
+    "amount": 5000,
+    "paymentMethod": "MPESA",
+    "transactionReference": "TEST-TXN-1792178394099",
+    "payerName": "David Kimani",
+    "payerPhone": "+254 722 400 001",
+    "recordedByUserId": "finance.test@sopacademy.ac.ke",
+    "notes": "Test fee installment",
+    "paymentDate": "2026-10-16T19:19:54.102Z",
+    "status": "VERIFIED"
+  },
+  {
     "id": "pay-1791891467710",
     "schoolId": "school-sop-001",
     "receiptNumber": "REC-2026-0104",
