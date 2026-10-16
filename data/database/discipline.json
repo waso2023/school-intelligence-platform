@@ -1,5 +1,19 @@
 [
   {
+    "id": "disc-1792180313126",
+    "schoolId": "school-sop-001",
+    "studentId": "std-001",
+    "studentName": "Kevin Kimani",
+    "className": "Grade 8 East",
+    "incidentType": "Late to Science Lab",
+    "severity": "LOW",
+    "description": "Test Misconduct 1792180313126",
+    "actionTaken": "Verbal reminder",
+    "reportedBy": "Science Teacher",
+    "status": "RESOLVED",
+    "date": "16 Oct 2026"
+  },
+  {
     "id": "disc-1792178391902",
     "schoolId": "school-sop-001",
     "studentId": "std-001",

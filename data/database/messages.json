@@ -1,5 +1,31 @@
 [
   {
+    "id": "log-1792180313979",
+    "schoolId": "school-sop-001",
+    "recipientName": "Test Guardian",
+    "recipientPhone": "+254711928392",
+    "channel": "SMS",
+    "body": "Repeated notification text 1792180313978",
+    "status": "DELIVERED",
+    "providerReference": "AT-SMS-9642884",
+    "sentAt": "2026-10-16T19:51:53.979Z",
+    "sender": "Test Sender"
+  },
+  {
+    "id": "log-1792180313972",
+    "schoolId": "school-sop-001",
+    "recipientName": "Test Guardian",
+    "studentName": "Test Student",
+    "recipientPhone": "+254700614575",
+    "channel": "SMS",
+    "subject": "Test Subject",
+    "body": "Unique Notification Body 1792180313972",
+    "status": "DELIVERED",
+    "providerReference": "AT-SMS-7798059",
+    "sentAt": "2026-10-16T19:51:53.972Z",
+    "sender": "Principal's Desk"
+  },
+  {
     "id": "log-1792178393149",
     "schoolId": "school-sop-001",
     "recipientName": "Test Guardian",
